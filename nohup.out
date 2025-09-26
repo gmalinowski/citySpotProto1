@@ -1,0 +1,17 @@
+2025-09-25 08:51:47,656 [   1125]   WARN - #c.i.m.l.t.AIAssistantTelemetryExporterKt - No Langfuse auth string found.
+2025-09-25 08:51:48,115 [   1584]   WARN - c.i.o.u.r.overrides - Conflicting registry key definition for key llm.chat.new.chat.modes.discoverability: it was defined by plugin com.intellij.ml.llm but redefined by plugin com.intellij.ml.llm. Consider adding overrides="true" for one of the plugins, see the documentation for com.intellij.openapi.util.registry.RegistryKeyBean.overrides for more details.
+2025-09-25 08:51:48,115 [   1584]   WARN - c.i.o.u.r.overrides - Conflicting registry key definition for key llm.chat.new.chat.modes.discoverability: it was defined by plugin com.intellij.ml.llm but redefined by plugin com.intellij.ml.llm. Consider adding overrides="true" for one of the plugins, see the documentation for com.intellij.openapi.util.registry.RegistryKeyBean.overrides for more details.
+2025-09-25 08:51:48,285 [   1754]   WARN - #c.i.i.u.UITheme - ParameterInfo.infoForeground has color value but doesn't have # prefix
+2025-09-25 08:51:48,888 [   2357]   WARN - #c.i.i.u.UIThemeBean - Do not set theme id in JSON (value=f92a0fa7-1a98-47cd-b5cb-78ff67e6f4f3)
+2025-09-25 08:51:48,911 [   2380]   WARN - #c.i.i.u.UIThemeBean - Do not set theme id in JSON (value=1a92aa6f-c2f1-4994-ae01-6a78e43eeb24)
+2025-09-25 08:51:48,947 [   2416]   WARN - #c.i.i.u.UIThemeBean - Do not set theme id in JSON (value=4b6007f7-b596-4ee2-96f9-968d3d3eb392)
+2025-09-25 08:51:48,967 [   2436]   WARN - #c.i.i.u.UIThemeBean - Do not set theme id in JSON (value=4f556d32-83cb-4b8b-9932-c4eccc4ce3af)
+2025-09-25 08:51:49,410 [   2879]   WARN - #c.i.o.e.c.i.EditorColorsManagerImpl - Skipping '_@user_Everforest-dark' because its parent scheme 'Everforest-dark' is missing.
+2025-09-25 08:51:49,411 [   2880]   WARN - #c.i.o.e.c.i.EditorColorsManagerImpl - Skipping '_@user_TokyoNightMoon' because its parent scheme 'TokyoNightMoon' is missing.
+2025-09-25 08:51:49,411 [   2880]   WARN - #c.i.o.e.c.i.EditorColorsManagerImpl - Skipping '_@user_TokyoNightDay' because its parent scheme 'TokyoNightDay' is missing.
+2025-09-25 08:51:49,411 [   2880]   WARN - #c.i.o.e.c.i.EditorColorsManagerImpl - Skipping '_@user_TokyoNightNight' because its parent scheme 'TokyoNightNight' is missing.
+2025-09-25 08:51:49,411 [   2880]   WARN - #c.i.o.e.c.i.EditorColorsManagerImpl - Skipping '_@user_Cyberpunk Theme' because its parent scheme 'Cyberpunk Theme' is missing.
+2025-09-25 08:51:52,210 [   5679]   WARN - #c.i.o.f.i.EditorCompositeModelManager - Cannot use saved provider list (savedProviders={split-provider[text-editor;markdown-preview-editor]=[Element: <state/>]}, resolvedProvider=[])
+JCEF_V(51:52:269): Found cef_server binary '/snap/rubymine/566/jbr/lib/cef_server' via System.getProperty('java.home')=/snap/rubymine/566/jbr
+JCEF_V(51:52:271): Java is started via native launcher. Found cef_server path /snap/rubymine/566/jbr/lib/cef_server (via system propety)
+2025-09-25 08:51:53,456 [   6925]   WARN - #c.i.o.v.i.l.NativeFileWatcherImpl - Watcher terminated with exit code 130

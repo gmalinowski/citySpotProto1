@@ -1,0 +1,13 @@
+
+
+
+<% clickable ||= false %>
+
+<div id="map"
+     data-controller="map"
+     data-map-clickable-value="<%= clickable  %>"
+     data-map-point-path-value="<%= photos_point_path(':id') %>"
+     data-map-points-url-value="<%= points_json_url %>">
+
+  <%= render "templates/marker_images" %>
+</div>

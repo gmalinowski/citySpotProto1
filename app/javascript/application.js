@@ -1,0 +1,16 @@
+// Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
+import "@hotwired/turbo-rails"
+import "controllers"
+import 'flowbite';
+import "leaflet"
+import "leaflet-providers"
+import "@rails/request.js"
+
+import Alpine from "alpinejs"
+import photosPreview from "photosPreview"
+import map from "map"
+
+window.photosPreview = photosPreview
+window.map = map
+
+Alpine.start()

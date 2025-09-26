@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "flowbite": "^3.1.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.36.0",
+    "eslint": "^9.36.0",
+    "globals": "^16.4.0"
+  }
+}
