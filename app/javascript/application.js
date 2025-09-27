@@ -8,9 +8,7 @@ import "@rails/request.js"
 
 import Alpine from "alpinejs"
 import photosPreview from "photosPreview"
-import map from "map"
 
 window.photosPreview = photosPreview
-window.map = map
 
 Alpine.start()

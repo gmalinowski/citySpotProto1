@@ -1,0 +1,37 @@
+
+<article class="max-w-64">
+
+<% if point.photos&.size < 2 %>
+  <div class="w-max grid grid-cols-1 gap-2">
+<% else %>
+  <div class="w-max grid grid-cols-2 gap-2">
+<% end %>
+    <% point.photos.first(4).each do |photo| %>
+      <%= link_to url_for(photo), target: "_blank" do %>
+        <%= image_tag url_for(photo), class: "w-20 md:w-32 object-contain rounded-lg" %>
+    <% end %>
+    <% end %>
+  </div>
+<div class="pt-3">
+  <%= link_to point do %>
+    <h1 class="text-base"><%= point.name %></h1>
+    <% end %>
+<p class="text-sm text-gray-500 max-h-32 overflow-scroll">
+  <%= point&.description %>
+</p>
+</div>
+
+</article>
+
+
+
+<!--  <div class="max-w-32 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">-->
+    <%#= link_to point_path(point) do %>
+      <%#= image_tag url_for(point.photos&.first), alt: point.name, class: "max-w-full h-auto block object-contain rounded-lg" %>
+    <%# end %>
+<!--    <div class="p-2">-->
+<!--      <a href="#">-->
+<!--        <h5 class="mb-1 text-md font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>-->
+<!--      </a>-->
+<!--    </div>-->
+<!--  </div>-->

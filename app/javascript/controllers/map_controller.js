@@ -16,7 +16,7 @@ export default class extends Controller {
 
     async connect() {
         this.setupMap()
-        const points = await this.fetchJson(this.pointsUrlValue);
+        const points = await this.fetchData(this.pointsUrlValue);
         this.renderPoints(points)
         if (this.clickableValue) this.enableClick()
     }
@@ -48,37 +48,18 @@ export default class extends Controller {
     addMarker(lat, lng, name, id) {
         const marker = L.marker([lat, lng]).addTo(this.map)
         if (name) marker.bindPopup(name)
-        marker.on("click", (evt) => this.loadPhotos(marker, id))
+        marker.on("click", (evt) => this.loadPhotosHtml(marker, id))
         return marker
     }
 
-    async loadPhotos(marker, id) {
-        const pointData = await this.fetchJson(this.pointPathValue.replace(':id', id))
-        if (pointData.photos.length < 1) return
+    async loadPhotosHtml(marker, id) {
+        const response = await get(this.pointPathValue.replace(':id', id))
+        if (!response.ok) return alert("Cannot fetch data")
 
-        const containerClone = this.tplContainerTarget.cloneNode(true)
-        containerClone.removeAttribute('style')
-        if (pointData.photos.length === 1) {
-            containerClone.classList.remove('grid-cols-2')
-            containerClone.classList.add('grid-cols-1')
-        } else {
-            containerClone.classList.remove('grid-cols-1')
-            containerClone.classList.add('grid-cols-2')
-        }
-
-        pointData.photos.forEach(img => {
-           const imgClone = this.tplImageTarget.content.cloneNode(true)
-            const imgEl = imgClone.querySelector('img')
-            imgEl.src = img.url;
-            imgEl.alt = img.name;
-            imgEl.addEventListener('click', () => window.open(img.url, "_blank"))
-            containerClone.appendChild(imgClone)
-        });
-
-        marker.bindPopup(containerClone, { maxWidth: 1000, autoPan: true }).openPopup();
+        marker.bindPopup(await response.html, { maxWidth: 1000, autoPan: true }).openPopup();
     }
 
-    async fetchJson(url) {
+    async fetchData(url) {
         try {
             const response = await get(url, {responseKind: "json"})
             if (response.ok) {

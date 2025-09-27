@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :points do
     member do
-      get :photos
+      get :marker
     end
   end
 
