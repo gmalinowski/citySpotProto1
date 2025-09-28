@@ -52,6 +52,11 @@ class PointsController < ApplicationController
     end
   end
 
+  def destroy
+    Point.find(params[:id]).destroy
+    head :ok
+  end
+
   def new
     @point = Point.new
   end

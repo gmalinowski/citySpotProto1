@@ -11,6 +11,7 @@ export default class extends Controller {
         clickable: Boolean,
     }
     map = null;
+    markers = {};
     // apikey = 'OF9pwzHdOSiAvjocuV6K3tLdzq7qzDjJ'
     apikey = 'GC_rSoNlzYdN4GZ0MuaHcPFaUZ6iR4S8KDUZSNLZC3k'
     mapStyle = 'outdoor'
@@ -27,9 +28,16 @@ export default class extends Controller {
         console.log("subscribePoints")
         consumer.subscriptions.create("PointsChannel", {
             received: (data) => {
-                if (data.action === "create") {
-                    const point = data.point
-                    this.addMarker(point.latitude, point.longitude, point.name, point.id)
+                switch (data.action) {
+                    case "create":
+                        this.addMarker(point.latitude, point.longitude, point.name, point.id)
+                        break
+                    case "update":
+                        alert("update point")
+                        break
+                    case "destroy":
+                        this.removeMarker(data.point.id)
+                        break
                 }
             }
         })
@@ -61,9 +69,15 @@ export default class extends Controller {
 
     addMarker(lat, lng, name, id) {
         const marker = L.marker([lat, lng]).addTo(this.map)
+        this.markers[id] = marker;
         if (name) marker.bindPopup(name)
         marker.on("click", (evt) => this.loadPhotosHtml(marker, id))
         return marker
+    }
+
+    removeMarker(id) {
+        this.markers[id].remove();
+        delete this.markers[id];
     }
 
     async loadPhotosHtml(marker, id) {
