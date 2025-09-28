@@ -9,6 +9,9 @@ export default class extends Controller {
         pointsUrl: String,
         pointPath: String,
         clickable: Boolean,
+        activeMarkerClass: String,
+        editMarkerClass: String,
+        editPointId: Number
     }
     map = null;
     markers = {};
@@ -30,7 +33,7 @@ export default class extends Controller {
             received: (data) => {
                 switch (data.action) {
                     case "create":
-                        this.addMarker(point.latitude, point.longitude, point.name, point.id)
+                    this.addMarker(point.latitude, point.longitude, point.id)
                         break
                     case "update":
                         alert("update point")
@@ -44,7 +47,7 @@ export default class extends Controller {
     }
 
     enableClick() {
-        this.tmpMarker = null
+        this.markers[null] = null
         this.map.on("click", evt => {
             this.updateFormCoordinates(evt.latlng.lat, evt.latlng.lng)
         })
@@ -54,25 +57,33 @@ export default class extends Controller {
         document.getElementById("point_latitude").value = lat
         document.getElementById("point_longitude").value = lng
 
-        if (this.tmpMarker == null) {
-            this.tmpMarker = this.addMarker(lat, lng)
+        if (this.markers[null] == null) {
+            this.markers[null] = this.addMarker(lat, lng, null, { classList: this.activeMarkerClassValue })
+
         } else {
-            this.tmpMarker.setLatLng([lat, lng])
+            this.markers[null].setLatLng([lat, lng])
         }
     }
 
     renderPoints(points) {
         points.forEach(point => {
-            this.addMarker(point.latitude, point.longitude, point.name, point.id)
+            if (this.editPointIdValue == point.id)
+                this.addMarker(point.latitude, point.longitude, point.id, { classList: this.editMarkerClassValue })
+            else
+                this.addMarker(point.latitude, point.longitude, point.id)
         })
     }
 
-    addMarker(lat, lng, name, id) {
+    addMarker(lat, lng, id, options = {}) {
         const marker = L.marker([lat, lng]).addTo(this.map)
+        if (options.classList) this.setMarkerClass(marker, options.classList);
         this.markers[id] = marker;
-        if (name) marker.bindPopup(name)
         marker.on("click", (evt) => this.loadPhotosHtml(marker, id))
         return marker
+    }
+
+    setMarkerClass(marker, classList) {
+        marker.getElement().classList.add(classList)
     }
 
     removeMarker(id) {

@@ -1,0 +1,6 @@
+
+<section class="h-[50dvh] mb-4">
+  <%= render "shared/map", points_json_url: points_path, clickable: true, edit_point_id: @point.id  %>
+</section>
+
+<%= render 'form', point: @point %>

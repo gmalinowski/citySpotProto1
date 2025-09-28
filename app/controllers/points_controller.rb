@@ -1,6 +1,6 @@
 class PointsController < ApplicationController
 
-  before_action :set_point_with_photos, only: [:show, :marker]
+  before_action :set_point_with_photos, only: [:show, :marker, :edit, :update]
   def index
     @points = Point.all
     respond_to do |format|
@@ -59,6 +59,18 @@ class PointsController < ApplicationController
 
   def new
     @point = Point.new
+  end
+
+  def edit
+
+  end
+
+  def update
+    if @point.update(point_params)
+      redirect_to edit_point_path(@point)
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   private
