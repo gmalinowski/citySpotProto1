@@ -11,6 +11,16 @@ class Point < ActiveRecord::Base
   before_validation :set_location
   after_find :populate_virtual_coords
 
+  after_create_commit do |point|
+    PointsChannel.broadcast_to :all_clients, { action: "create", point: {
+      id: point.id,
+      name: point.name,
+      latitude: point.latitude,
+      longitude: point.longitude,
+    } }
+  end
+  # after_update_commit :broadcast
+  # after_destroy_commit :broadcast
 
   private
 

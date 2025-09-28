@@ -1,6 +1,7 @@
 import {Controller} from "@hotwired/stimulus"
 import L from 'leaflet'
 import {get} from "@rails/request.js"
+import consumer from "channels/consumer"
 
 export default class extends Controller {
     static targets = ["tplContainer", "tplImage"]
@@ -15,10 +16,23 @@ export default class extends Controller {
     mapStyle = 'outdoor'
 
     async connect() {
+        this.subscribePoints()
         this.setupMap()
         const points = await this.fetchData(this.pointsUrlValue);
         this.renderPoints(points)
         if (this.clickableValue) this.enableClick()
+    }
+
+    subscribePoints() {
+        console.log("subscribePoints")
+        consumer.subscriptions.create("PointsChannel", {
+            received: (data) => {
+                if (data.action === "create") {
+                    const point = data.point
+                    this.addMarker(point.latitude, point.longitude, point.name, point.id)
+                }
+            }
+        })
     }
 
     enableClick() {

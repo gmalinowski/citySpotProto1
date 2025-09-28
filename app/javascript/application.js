@@ -5,6 +5,7 @@ import 'flowbite';
 import "leaflet"
 import "leaflet-providers"
 import "@rails/request.js"
+import "channels"
 
 import Alpine from "alpinejs"
 import photosPreview from "photosPreview"
