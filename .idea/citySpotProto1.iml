@@ -59,6 +59,7 @@
     <orderEntry type="library" scope="PROVIDED" name="debug (v1.11.0, mise: 3.4.5) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="dotenv (v3.1.8, mise: 3.4.5) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="drb (v2.2.3, mise: 3.4.5) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="dry-cli (v1.3.0, mise: 3.4.5) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ed25519 (v1.4.0, mise: 3.4.5) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="erb (v5.0.2, mise: 3.4.5) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="erubi (v1.13.1, mise: 3.4.5) [gem]" level="application" />
@@ -82,6 +83,7 @@
     <orderEntry type="library" scope="PROVIDED" name="mini_mime (v1.1.5, mise: 3.4.5) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="minitest (v5.25.5, mise: 3.4.5) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="msgpack (v1.8.0, mise: 3.4.5) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="mutex_m (v0.3.0, mise: 3.4.5) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="net-imap (v0.5.10, mise: 3.4.5) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="net-pop (v0.1.2, mise: 3.4.5) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="net-protocol (v0.2.2, mise: 3.4.5) [gem]" level="application" />
@@ -105,6 +107,7 @@
     <orderEntry type="library" scope="PROVIDED" name="raabro (v1.4.0, mise: 3.4.5) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="racc (v1.8.1, mise: 3.4.5) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack (v3.2.1, mise: 3.4.5) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rack-proxy (v0.7.7, mise: 3.4.5) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack-session (v2.1.1, mise: 3.4.5) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack-test (v2.2.0, mise: 3.4.5) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rackup (v2.2.1, mise: 3.4.5) [gem]" level="application" />
@@ -148,6 +151,8 @@
     <orderEntry type="library" scope="PROVIDED" name="unicode-emoji (v4.1.0, mise: 3.4.5) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="uri (v1.0.3, mise: 3.4.5) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="useragent (v0.16.11, mise: 3.4.5) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="vite_rails (v3.0.19, mise: 3.4.5) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="vite_ruby (v3.9.2, mise: 3.4.5) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="web-console (v4.2.1, mise: 3.4.5) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="websocket (v1.2.11, mise: 3.4.5) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="websocket-driver (v0.8.0, mise: 3.4.5) [gem]" level="application" />
