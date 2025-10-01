@@ -69,3 +69,5 @@ gem "activerecord-postgis-adapter", "~> 11.0"
 gem "rgeo", "~> 3.0"
 
 gem "requestjs-rails", "~> 0.0.13"
+
+gem "vite_rails", "~> 3.0"

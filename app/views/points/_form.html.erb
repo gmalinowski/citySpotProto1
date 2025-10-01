@@ -1,0 +1,38 @@
+<%= form_with(model: point, class: "max-w-sm mx-auto mb-8", id: dom_id(point)) do |form| %>
+  <%= point.errors.full_messages.join(", ") %>
+  <div class="mb-5">
+    <%= form.label :latitude, "Latitude", class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+    <%= form.number_field :latitude, step: :any, min: -90, max: 90, required: true, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
+    <%= form.label :longitude, "Latitude", class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+    <%= form.number_field :longitude, step: :any, min: -180, max: 180, required: true, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
+  </div>
+
+  <div class="mb-5">
+    <%= form.label :name, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+    <%= form.text_field :name, required: true, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
+    <% if point.errors[:name].any? %>
+      <p class="mt-2 text-sm text-red-600 dark:text-red-500">
+        <span class="font-medium">Oops! Name</span>
+        <%= point.errors[:name].join(", ") %>
+      </p>
+    <% end %>
+  </div>
+
+  <div class="mb-5">
+    <%= form.label :description, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+    <%= form.text_area :description, required: true, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
+    <% if point.errors[:description].any? %>
+      <p class="mt-2 text-sm text-red-600 dark:text-red-500">
+        <span class="font-medium">Oops! Description</span>
+        <%= point.errors[:description].join(", ") %>
+      </p>
+    <% end %>
+  </div>
+
+
+  <div class="mb-5">
+    <%= render "shared/photo_field", form: form, field_name: :photos %>
+  </div>
+
+  <%= form.submit class: "btn btn-md btn-success mt-3 w-full" %>
+<% end %>

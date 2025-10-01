@@ -10,3 +10,5 @@ pin "leaflet" # @1.9.4
 pin "leaflet-providers" # @2.0.0
 pin "alpinejs" # @3.15.0
 pin "photosPreview", to: "components/photos_preview.js"
+pin "@rails/actioncable", to: "actioncable.esm.js"
+pin_all_from "app/javascript/channels", under: "channels"

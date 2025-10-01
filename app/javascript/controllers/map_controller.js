@@ -1,6 +1,7 @@
 import {Controller} from "@hotwired/stimulus"
 import L from 'leaflet'
 import {get} from "@rails/request.js"
+import consumer from "../channels/consumer"
 
 export default class extends Controller {
     static targets = ["tplContainer", "tplImage"]
@@ -8,21 +9,45 @@ export default class extends Controller {
         pointsUrl: String,
         pointPath: String,
         clickable: Boolean,
+        activeMarkerClass: String,
+        editMarkerClass: String,
+        editPointId: Number
     }
     map = null;
+    markers = {};
     // apikey = 'OF9pwzHdOSiAvjocuV6K3tLdzq7qzDjJ'
     apikey = 'GC_rSoNlzYdN4GZ0MuaHcPFaUZ6iR4S8KDUZSNLZC3k'
     mapStyle = 'outdoor'
 
     async connect() {
+        this.subscribePoints()
         this.setupMap()
         const points = await this.fetchData(this.pointsUrlValue);
         this.renderPoints(points)
         if (this.clickableValue) this.enableClick()
     }
 
+    subscribePoints() {
+        console.log("subscribePoints")
+        consumer.subscriptions.create("PointsChannel", {
+            received: (data) => {
+                switch (data.action) {
+                    case "create":
+                    this.addMarker(point.latitude, point.longitude, point.id)
+                        break
+                    case "update":
+                        alert("update point")
+                        break
+                    case "destroy":
+                        this.removeMarker(data.point.id)
+                        break
+                }
+            }
+        })
+    }
+
     enableClick() {
-        this.tmpMarker = null
+        this.markers[null] = null
         this.map.on("click", evt => {
             this.updateFormCoordinates(evt.latlng.lat, evt.latlng.lng)
         })
@@ -32,24 +57,38 @@ export default class extends Controller {
         document.getElementById("point_latitude").value = lat
         document.getElementById("point_longitude").value = lng
 
-        if (this.tmpMarker == null) {
-            this.tmpMarker = this.addMarker(lat, lng)
+        if (this.markers[null] == null) {
+            this.markers[null] = this.addMarker(lat, lng, null, { classList: this.activeMarkerClassValue })
+
         } else {
-            this.tmpMarker.setLatLng([lat, lng])
+            this.markers[null].setLatLng([lat, lng])
         }
     }
 
     renderPoints(points) {
         points.forEach(point => {
-            this.addMarker(point.latitude, point.longitude, point.name, point.id)
+            if (this.editPointIdValue == point.id)
+                this.addMarker(point.latitude, point.longitude, point.id, { classList: this.editMarkerClassValue })
+            else
+                this.addMarker(point.latitude, point.longitude, point.id)
         })
     }
 
-    addMarker(lat, lng, name, id) {
+    addMarker(lat, lng, id, options = {}) {
         const marker = L.marker([lat, lng]).addTo(this.map)
-        if (name) marker.bindPopup(name)
+        if (options.classList) this.setMarkerClass(marker, options.classList);
+        this.markers[id] = marker;
         marker.on("click", (evt) => this.loadPhotosHtml(marker, id))
         return marker
+    }
+
+    setMarkerClass(marker, classList) {
+        marker.getElement().classList.add(classList)
+    }
+
+    removeMarker(id) {
+        this.markers[id].remove();
+        delete this.markers[id];
     }
 
     async loadPhotosHtml(marker, id) {

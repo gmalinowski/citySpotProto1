@@ -1,4 +1,17 @@
 #map {
     height: 100%;
     width: 100%;
+    cursor: crosshair;
+}
+#map:active {
+    cursor: grabbing;
+}
+
+
+.marker-active {
+    filter: hue-rotate(280deg) brightness(1.3);
+}
+
+.marker-edit {
+    filter: hue-rotate(170deg) brightness(1.1);
 }

@@ -2,10 +2,14 @@
 
 
 <% clickable ||= false %>
+<% edit_point_id ||= nil %>
 
 <div id="map"
      data-controller="map"
      data-map-clickable-value="<%= clickable  %>"
+     data-map-active-marker-class-value="marker-active"
+     data-map-edit-marker-class-value="marker-edit"
+     data-map-edit-point-id-value="<%= edit_point_id %>"
      data-map-point-path-value="<%= marker_point_path(':id') %>"
      data-map-points-url-value="<%= points_json_url %>">
 
