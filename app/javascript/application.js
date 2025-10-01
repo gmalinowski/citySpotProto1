@@ -12,4 +12,5 @@ import photosPreview from "photosPreview"
 
 window.photosPreview = photosPreview
 
+window.Alpine = Alpine
 Alpine.start()
