@@ -1,7 +1,7 @@
 import {Controller} from "@hotwired/stimulus"
 import L from 'leaflet'
 import {get} from "@rails/request.js"
-import consumer from "channels/consumer"
+import consumer from "../channels/consumer"
 
 export default class extends Controller {
     static targets = ["tplContainer", "tplImage"]

@@ -5,6 +5,16 @@
 //    <%= vite_javascript_tag 'application' %>
 import '../application'
 
+import { mount } from 'svelte';
+import Sss from '../components/Sss.svelte';
+
+mount(Sss, {
+    target: document.getElementById('sss'),
+    props: {
+        // opcjonalne właściwości
+    }
+});
+
 console.log('Vite ⚡️ Rails')
 
 // If using a TypeScript entrypoint file:
